@@ -103,3 +103,24 @@ This endpoint processes raw log strings and returns structured analytics.
   "malformed_logs": []
 }
 
+## 🏗️ System Flow
+
+Client Request  
+↓  
+FastAPI Endpoint  
+↓  
+Log Parsing Layer  
+↓  
+Data Structuring  
+↓  
+Aggregation (Counter)  
+↓  
+JSON Response
+
+## 🧪 Example Use Cases
+
+- Application log monitoring  
+- User activity tracking  
+- Event analytics systems  
+- Log processing pipelines  
+
