@@ -57,8 +57,7 @@ def process_logs(request: LogParse):
     return {
         "success": success_count,
         "failed": failure_count,
-        "most_active_user": user_counter.most_common(1)[0][0]
-        if user_counter else None,
+        "most_active_user": user_counter.most_common(1)[0][0] if user_counter else None,
         "action_frequency": dict(action_counter),
         "structured_logs": structured_logs,
         "malformed_logs": malformed_logs
