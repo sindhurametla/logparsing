@@ -1,96 +1,104 @@
-# Log Processing & Analytics System
+# Log Processing API (FastAPI)
 
-A FastAPI-based system that processes raw application logs, converts them into structured data, and generates analytical insights such as success/failure counts, user activity, and action frequency distribution.
+A simple FastAPI-based service that processes and analyzes log data.
 
----
-
-## 🚀 Features
-
-- Accepts log data via API
-- Parses raw log strings into structured format
-- Tracks success and failure events
-- Identifies most active users
-- Computes action frequency distribution
-- Handles malformed log entries safely
-- Returns structured analytics response
+It parses raw logs, converts them into structured format, and provides statistics like success/failure count, most active user, and action frequency.
 
 ---
 
-## 🧠 Problem Statement
+# Features
 
-Modern systems generate large volumes of unstructured logs.  
-This project focuses on:
-
-- Converting raw logs into structured format
-- Extracting meaningful insights
-- Handling inconsistent or malformed data
-- Producing clean analytical summaries via API
+- Parse log strings into structured JSON
+- Count success and failed logs
+- Find most active user
+- Count action frequency
+- Detect malformed logs safely
 
 ---
 
-## ⚙️ Tech Stack
+# Tech Stack
 
 - Python
 - FastAPI
 - Pydantic
 - Collections (Counter)
-- Uvicorn
 
 ---
 
-## 📦 Installation
+# Log Format
 
-Install dependencies:
+Each log must follow this format:
 
-```bash
-pip install fastapi uvicorn
+timestamp|user_id|action|status
 
-##▶️ How to Run the Project
+Example:
 
-Start the FastAPI server:
+2026-05-01 10:00:00|user_1|login|success  
+2026-05-01 10:05:00|user_2|purchase|failed
 
-uvicorn main:app --reload
+---
 
-The application will run at:
+# Installation
 
-http://127.0.0.1:8000
+## Step 1: Clone project
 
-Once started, you can:
+git clone https://github.com/your-username/log-processing-api.git  
+cd log-processing-api  
 
-##Access API endpoints
-Test requests via Swagger UI
-View live documentation
-📚 API Documentation (Swagger UI)
+## Step 2: Create virtual environment
 
-FastAPI automatically generates interactive API docs:
+python -m venv venv  
 
-http://127.0.0.1:8000/docs
+## Step 3: Activate virtual environment
 
-You can test all endpoints directly in the browser.
+Windows:
+venv\Scripts\activate  
 
-##📡 API Endpoint
+Mac/Linux:
+source venv/bin/activate  
+
+## Step 4: Install dependencies
+
+pip install fastapi uvicorn  
+
+---
+
+# Run the project
+
+uvicorn main:app --reload  
+
+Open in browser:
+
+http://127.0.0.1:8000  
+
+---
+
+# API Endpoint
+
 POST /process_logs
 
-This endpoint processes raw log strings and returns structured analytics.
+---
 
-##📥 Request Format
+# Request Example
+
 {
   "logs": [
     "2026-05-01 10:00:00|user_1|login|success",
-    "2026-05-01 10:05:00|user_2|purchase|failed",
-    "2026-05-01 10:10:00|user_1|logout|success",
-    "2026-05-01 10:15:00|user_3|login|success"
+    "2026-05-01 10:05:00|user_2|purchase|failed"
   ]
 }
-##📤 Response Format
+
+---
+
+# Response Example
+
 {
-  "success": 3,
+  "success": 1,
   "failed": 1,
   "most_active_user": "user_1",
   "action_frequency": {
-    "login": 2,
-    "purchase": 1,
-    "logout": 1
+    "login": 1,
+    "purchase": 1
   },
   "structured_logs": [
     {
@@ -103,24 +111,30 @@ This endpoint processes raw log strings and returns structured analytics.
   "malformed_logs": []
 }
 
-## 🏗️ System Flow
+---
 
-Client Request  
-↓  
-FastAPI Endpoint  
-↓  
-Log Parsing Layer  
-↓  
-Data Structuring  
-↓  
-Aggregation (Counter)  
-↓  
-JSON Response
+# How it works
 
-## 🧪 Example Use Cases
+- Reads log list
+- Splits each log using "|"
+- Converts into dictionary format
+- Tracks stats using Counter
+- Handles bad logs safely
 
-- Application log monitoring  
-- User activity tracking  
-- Event analytics systems  
-- Log processing pipelines  
+---
 
+# Error Handling
+
+If a log is not in correct format, it is stored in:
+
+malformed_logs
+
+---
+
+# Author
+
+Sindura Metla
+
+---
+
+# GitHub
