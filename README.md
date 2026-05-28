@@ -42,8 +42,8 @@ Example:
 
 ## Step 1: Clone project
 
-git clone https://github.com/your-username/log-processing-api.git  
-cd log-processing-api  
+git clone https://github.com/sindhurametla/logparsing.git  
+cd logparsing.git  
 
 ## Step 2: Create virtual environment
 
@@ -138,3 +138,4 @@ Sindura Metla
 ---
 
 # GitHub
+https://github.com/sindhurametla/logparsing.git  
