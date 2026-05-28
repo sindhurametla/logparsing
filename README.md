@@ -45,7 +45,7 @@ Install dependencies:
 ```bash
 pip install fastapi uvicorn
 
-▶️ How to Run the Project
+##▶️ How to Run the Project
 
 Start the FastAPI server:
 
@@ -57,7 +57,7 @@ http://127.0.0.1:8000
 
 Once started, you can:
 
-Access API endpoints
+##Access API endpoints
 Test requests via Swagger UI
 View live documentation
 📚 API Documentation (Swagger UI)
@@ -68,12 +68,12 @@ http://127.0.0.1:8000/docs
 
 You can test all endpoints directly in the browser.
 
-📡 API Endpoint
+##📡 API Endpoint
 POST /process_logs
 
 This endpoint processes raw log strings and returns structured analytics.
 
-📥 Request Format
+##📥 Request Format
 {
   "logs": [
     "2026-05-01 10:00:00|user_1|login|success",
@@ -82,7 +82,7 @@ This endpoint processes raw log strings and returns structured analytics.
     "2026-05-01 10:15:00|user_3|login|success"
   ]
 }
-📤 Response Format
+##📤 Response Format
 {
   "success": 3,
   "failed": 1,
